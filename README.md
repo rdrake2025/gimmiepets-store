@@ -32,7 +32,9 @@ When the owner changes anything in Shopify admin, update:
 2. The visible prices in `index.html`, `catalog.html`, and the two `product-*.html` pages.
 
 To get current variant IDs at any time (public endpoint, no auth):
-`https://gimmiepets.com/products/<product-handle>.js` → `variants[].id`.
+`https://bys-user-store-50617.myshopify.com/products/<product-handle>.js` → `variants[].id`.
+(Note: `gimmiepets.com` itself now points at this static site, not Shopify — use the
+`.myshopify.com` domain directly for any Shopify storefront API lookups.)
 
 ## Rules
 
