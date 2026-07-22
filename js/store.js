@@ -178,9 +178,10 @@
         </div>`;
       }).join("");
     }
-    // cross-sell: suggest whichever product is not in the cart yet
+    // cross-sell: suggest whichever ready-to-buy product is not in the cart yet
+    const isReady = (id) => Object.values(PRODUCTS[id].variants).some((v) => typeof v.id === "number");
     const inCart = new Set(cart.map((i) => i.id));
-    const suggestId = Object.keys(PRODUCTS).find((id) => !inCart.has(id));
+    const suggestId = Object.keys(PRODUCTS).find((id) => !inCart.has(id) && isReady(id));
     if (cart.length && suggestId) {
       const s = PRODUCTS[suggestId];
       const firstVariant = Object.keys(s.variants)[0];
@@ -214,6 +215,10 @@
   });
 
   function addToCart(id, variant, qty, silent) {
+    if (typeof PRODUCTS[id].variants[variant].id !== "number") {
+      toast("Coming soon — check back shortly!");
+      return;
+    }
     const cart = load();
     const hit = cart.find((i) => i.id === id && i.variant === variant);
     if (hit) hit.qty += qty; else cart.push({ id, variant, qty });
@@ -259,7 +264,14 @@
         qv.textContent = qty;
       });
     });
-    document.querySelector(".add-to-cart").addEventListener("click", () => addToCart(pid, variant, qty));
+    const addBtn = document.querySelector(".add-to-cart");
+    if (typeof p.variants[variant].id !== "number") {
+      addBtn.textContent = "Coming soon";
+      addBtn.disabled = true;
+      addBtn.classList.add("btn-disabled");
+    } else {
+      addBtn.addEventListener("click", () => addToCart(pid, variant, qty));
+    }
     document.querySelectorAll(".thumbs img").forEach((t) => {
       t.addEventListener("click", () => {
         mainImg.src = t.src;
