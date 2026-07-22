@@ -6,6 +6,7 @@
 (function () {
   const CDN = "https://cdn.shopify.com/s/files/1/0656/7080/7637/files/";
   const SHOP = "https://bys-user-store-50617.myshopify.com";
+  const PLACEHOLDER_IMG = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'><rect width='400' height='400' fill='lightgray'/><text x='200' y='200' font-family='sans-serif' font-size='22' fill='dimgray' text-anchor='middle'>Photo pending</text></svg>";
 
   const PRODUCTS = {
     hammock: {
@@ -25,6 +26,68 @@
         Blue: { price: 12.98, id: 42747553054805 },
         Pink: { price: 12.98, id: 42747553087573 },
       },
+    },
+    /* --- Below: CJ candidates, not live yet. Each needs a real Shopify variant ID
+       (from Shopify admin after importing via the CJ app) before checkout will work. --- */
+    seatbelt: {
+      name: "Adjustable Pet Car Seat Belt",
+      url: "product-seatbelt.html",
+      img: PLACEHOLDER_IMG,
+      variants: { Standard: { price: 14.99, id: "TODO_VARIANT_ID" } },
+    },
+    leash: {
+      name: "Retractable Dog Leash with Spotlight",
+      url: "product-leash.html",
+      img: PLACEHOLDER_IMG,
+      variants: { Standard: { price: 24.99, id: "TODO_VARIANT_ID" } },
+    },
+    "bath-gloves": {
+      name: "Silicone Dog Bath Massage Gloves",
+      url: "product-bath-gloves.html",
+      img: PLACEHOLDER_IMG,
+      variants: { "One Pair": { price: 16.99, id: "TODO_VARIANT_ID" } },
+    },
+    "lint-roller": {
+      name: "2-in-1 Reusable Pet Hair Remover",
+      url: "product-lint-roller.html",
+      img: PLACEHOLDER_IMG,
+      variants: { Standard: { price: 14.99, id: "TODO_VARIANT_ID" } },
+    },
+    "airtag-collar": {
+      name: "Reflective Waterproof AirTag Collar Case",
+      url: "product-airtag-collar.html",
+      img: PLACEHOLDER_IMG,
+      variants: { Standard: { price: 19.99, id: "TODO_VARIANT_ID" } },
+    },
+    "travel-bottle": {
+      name: "Portable Outdoor Travel Water Bottle",
+      url: "product-travel-bottle.html",
+      img: PLACEHOLDER_IMG,
+      variants: { Standard: { price: 17.99, id: "TODO_VARIANT_ID" } },
+    },
+    sweater: {
+      name: "Cashmere Pet Sweater",
+      url: "product-sweater.html",
+      img: PLACEHOLDER_IMG,
+      variants: { Standard: { price: 22.99, id: "TODO_VARIANT_ID" } },
+    },
+    "cooling-mat": {
+      name: "Dog Cooling Mat",
+      url: "product-cooling-mat.html",
+      img: PLACEHOLDER_IMG,
+      variants: { Standard: { price: 24.99, id: "TODO_VARIANT_ID" } },
+    },
+    feeder: {
+      name: "Automatic Pet Feeder & Water Dispenser",
+      url: "product-feeder.html",
+      img: PLACEHOLDER_IMG,
+      variants: { Standard: { price: 34.99, id: "TODO_VARIANT_ID" } },
+    },
+    "undercoat-comb": {
+      name: "Open-Knot Massage Comb",
+      url: "product-undercoat-comb.html",
+      img: PLACEHOLDER_IMG,
+      variants: { Standard: { price: 15.99, id: "TODO_VARIANT_ID" } },
     },
   };
 
